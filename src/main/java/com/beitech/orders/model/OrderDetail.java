@@ -1,47 +1,54 @@
 package com.beitech.orders.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-
+import javax.persistence.*;
 
 @Entity
 public class OrderDetail {
-	
-	@Id
-	@GeneratedValue
-	private Long orderDetailId;
-	private String productDescription;
-	private int price;
-	@ManyToOne
-	private Long OrderId;
-	
-	public String getProductDescription() {
-		return productDescription;
-	}
-	public void setProductDescription(String productDescription) {
-		this.productDescription = productDescription;
-	}
-	public int getPrice() {
-		return price;
-	}
-	public void setPrice(int price) {
-		this.price = price;
-	}
-	public Long getOrderDetailId() {
-		return orderDetailId;
-	}
-	public void setOrderDetailId(Long orderDetailId) {
-		this.orderDetailId = orderDetailId;
-	}
-	public Long getOrderId() {
-		return OrderId;
-	}
-	public void setOrderId(Long orderId) {
-		OrderId = orderId;
-	}
-	
-	
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long orderDetailId;
+    private String productDescription;
+    private Double price;
+
+    /*
+    * @ManyToOne: Define la relación muchos a uno con la entidad Orden.
+      @JoinColumn(name = "orden_id"): Especifica la columna en la tabla OrdenDetail que se utiliza como clave foránea
+      * para la relación con Orden.
+    * */
+    @ManyToOne
+    @JoinColumn(name = "orderId")
+    private Order order;
+
+    public Long getOrderDetailId() {
+        return orderDetailId;
+    }
+
+    public void setOrderDetailId(Long orderDetailId) {
+        this.orderDetailId = orderDetailId;
+    }
+
+    public String getProductDescription() {
+        return productDescription;
+    }
+
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
 }

@@ -10,16 +10,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.beitech.orders.model.*;
-import com.beitech.orders.respository.OrdenJpaRepository;
 
 @RestController
 @RequestMapping("/ordenes")
 public class OrdenController {
 
-	@Autowired
-	 private OrdenJpaRepository ordenJpaRepository;
 
-	@GetMapping(value = "/allOrden")
+/*	@GetMapping(value = "/allOrden")
 	 public List<Orden> findAll(){
 		 return ordenJpaRepository.findAll(); 
 	 }
@@ -33,6 +30,6 @@ public class OrdenController {
 	public Orden load(@RequestBody final Orden orden){
 		ordenJpaRepository.save(orden);
 		return ordenJpaRepository.findByordenId(orden.getOrdenId());
-	}
+	}*/
 	
 }
